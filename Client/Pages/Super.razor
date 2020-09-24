@@ -1,6 +1,22 @@
 ﻿@page "/super"
+@inject HttpClient Http
+
+
 <h3>Super</h3>
+<h2>@s</h2>
 
 @code {
-
+    
+    string s {get;set;}
+    protected override async Task OnInitializedAsync()
+    {
+      try
+      {
+         s = await Http.GetStringAsync ("/api/ProductsGet");
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex.ToString());
+      }
+    }
 }

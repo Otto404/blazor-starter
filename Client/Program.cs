@@ -18,5 +18,11 @@ namespace BlazorApp.Client
 
             await builder.Build().RunAsync();
         }
+
+        public void nix()
+        {
+            HttpClient client = new HttpClient();
+            client.GetStringAsync("");
+        }
     }
 }
