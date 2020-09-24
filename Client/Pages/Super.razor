@@ -2,12 +2,19 @@
 @inject HttpClient Http
 
 
-<h3>Super</h3>
+<h3>Super nun mir werten.</h3>
 <h2>@s</h2>
+@if (!string.IsNullOrEmpty(fehler))
+{
+    <h3>fehler</h3>
+    <div>@fehler</div>
+}
+
 
 @code {
     
     string s {get;set;}
+    string fehler {get;set;}
     protected override async Task OnInitializedAsync()
     {
       try
@@ -16,6 +23,7 @@
       }
       catch (Exception ex)
       {
+          fehler= ex.ToString();
         Console.WriteLine(ex.ToString());
       }
     }
